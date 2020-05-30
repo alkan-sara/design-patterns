@@ -1,28 +1,30 @@
-package Command;
+package MediatoraAndFactory;
+
 public class Main {
 
 	public static void main(String[] args) {
-		Instructor instructor = new Instructor();
-		Trainee trainee = new Trainee();
+		MainFactory factory = new MainFactory();
+		User firstUser = factory.createUser("IVAN");
+		User secondUser = factory.createUser("IVANA");
+		User thirdUser = factory.createUser("MRIYA");
+		User anotherUser = factory.createUser("PETRA");
+
+		Room.addUser(firstUser);
+		Room.addUser(secondUser);
+		Room.addUser(thirdUser);
 		
-		Viewer viewer1 = new Viewer();
-		Viewer viewer2 = new Viewer();
-		Viewer viewer3 = new Viewer();
-		
-		trainee.subscribe(viewer1);
-		trainee.subscribe(viewer2);
-		trainee.subscribe(viewer3);
-		
-		
-		Command setNewTrainingLegni = new LegniCommand(trainee);
-		Command setNewTrainingStani = new StaniCommand(trainee); 
-		
-		instructor.setCommand(setNewTrainingLegni );
-		instructor.ChangeTraining();
-		
-		instructor.setCommand(setNewTrainingStani);
-		instructor.ChangeTraining();
-		
+		firstUser.sendMessage("Hello!");
+		secondUser.sendMessage("Hi !");
+		thirdUser.sendMessage("Hi !");
+		anotherUser.sendMessage("Hi!");
+		firstUser.sendMessage("cats");
+		secondUser.sendMessage("addBot");
+		thirdUser.sendMessage(" I have a cat at home!");
+		thirdUser.sendMessage("Do you have cats?");
+
+
+
+
 	}
 
 }
